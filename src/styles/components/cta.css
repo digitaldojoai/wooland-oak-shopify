@@ -1,0 +1,114 @@
+.cta {
+  max-height: 900px;
+  min-height: 300px;
+  padding: 30px 0;
+  @media (--ms) {
+    text-align: center !important;
+  }
+  @media (--m) {
+    padding: 80px 0;
+  }
+  background-size: cover;
+  background-position: center;
+  img {
+    opacity: 0;
+  }
+
+  &__background {
+    transition: opacity .25s;
+    @media (--m) {
+      opacity: 0;
+    }
+  }
+
+  &.visible {
+    .cta__background {
+      opacity: 1;
+    }
+  }
+
+  &.new-launch-full {
+    min-height: 35vh;
+    @media (--s) {
+      min-height: 35vh;
+    }
+    @media (--m) {
+      min-height: 50vh;
+    }
+    @media (--l) {
+      min-height: 60vh;
+    }
+    @media (--xl) {
+      min-height: 75vh;
+    }
+  }
+
+  @media (--l) {
+    padding: 120px 0;
+  }
+  h2 {
+    margin: .75rem 0;
+  }
+  h2, h3, h4 {
+    font-family: 'freight-display-pro'
+  }
+  h4 {
+    margin: 10px 0;
+  }
+  h5 {
+    text-transform: uppercase;
+    font-family: 'sofia-pro';
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+  h3 {
+    margin: 20px 0;
+  }
+  p {
+    font-size: calc((18/16) * 1rem);
+    font-weight: 300;
+    @media (--m) {
+      font-size: calc((28/16) * 1rem);
+    }
+  }
+  &__fields {
+    max-width: 1000px;
+    .button {
+      margin-top: 20px;
+    }
+  }
+}
+.cta__m {
+  h2 {
+    max-width: 760px;
+  }
+}
+.cta__t {
+  @media (--m) {
+    min-height: 720px;
+  }
+}
+#ready-set-jet- {
+  color: var(--orange);
+}
+
+.article__hero__content {
+  transform: translateY(75px);
+  @media (--m) {
+    transform: translateY(100px);
+  }
+}
+.article__hero__title {
+  padding-top: 75px;
+  @media (--m) {
+    padding-top: 100px;
+  }
+}
+
+.product__brand_cta {
+  .cta {
+    @media (--m) {
+      padding: 260px 0;
+    }
+  }
+}

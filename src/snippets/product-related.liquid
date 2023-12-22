@@ -1,0 +1,66 @@
+{% assign related = false %}
+{% for collection in collections %}
+  {% if collection.handle == 'women' %}
+    {% assign related = collection %}
+  {% elsif collection.handle == 'men' %}
+    {% assign related = collection %}
+  {% endif %}
+{% endfor %}
+
+{% assign filters = '' %}
+{% for tag in tags %}
+  {% if tag contains 'collection' or tag contains 'weight' or tag contains 'material' %}
+    {% assign filters = filters | append: tag %}
+  {% endif %}
+{% endfor %}
+
+{% assign products = '' %}
+{% for product in related.products %}
+  {% assign valid = false %}
+  {% for tag in product.tags %}
+    {% if filters contains tag %}
+      {% assign valid = true%}
+    {% endif %}
+  {% endfor %}
+
+  {% if valid and product.handle != exclude.handle %}
+    {% assign products = products | append: product.handle | append: ',' %}
+  {% endif %}
+{% endfor %}
+{% assign products = products | split: ',' %}
+
+<div class='related outer pb1 rel'>
+  <div class='container'>
+    <div class='related__title f aic jcc ac fw'>
+      <h2 class='mv0 fill-h'>You might also like</h2>
+
+      <a href='{{ related.url }}' class='related__all mt1 sans track demi small caps'>Shop All</a>
+
+      {%
+      include 'underline-link' with
+      className: 'related__all--underline mt1',
+      url: related.url,
+      cta: 'Shop All'
+      %}
+    </div>
+
+    <div class='related__products f ais fw'>
+      {% for handle in products limit: 4 %}
+        {% assign product = all_products[handle] %}
+
+        <div class='product-card block rel mb1'>
+          <a href='{{ product.url }}' class='block rel'>
+            <span class='__bg abs fill bgw'></span>
+            <div class='product-card__img rel'>
+              {% include 'image-fill' with image: product.featured_image %}
+            </div>
+            <div class='product-card__content px1 mv05 ac rel'>
+              <h6 class='mt0 mb05 sans caps track small'>{{ product.title }}</h6>
+              <h6 class='mv0 sans caps track cm small'>{{ product.price | money }}</h6>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

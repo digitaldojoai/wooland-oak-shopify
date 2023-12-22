@@ -1,0 +1,129 @@
+<section data-section-id='{{ section.id }}' data-section-type='contact-section'>
+  <div class='outer page-spacing-vertical'>
+    <div class='container'>
+      <ul class='contact__emails f ais fw'>
+        {% for block in section.blocks %}
+          {% assign contact = block.settings %}
+          <li class='contact__email mb1'>
+            <h6 class='mt0 mb025 xsmall sans caps track demi'>{{ contact.title }}</h6>
+            <a href='mailto:{{ contact.email }}' class='h4 mv0 serif link-hover'>– {{ contact.email }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+
+      <hr class='cg' />
+
+      <div class='contact__cols f fw'>
+        <div class='contact__form contact__col' data-component='contact'>
+          <h2 class='mt0 mb05 serif'>Leave us a message</h2>
+
+          {% form 'contact' %}
+            {% if form.posted_successfully? %}
+              <div class='mb1 h4 cm'>
+                Thanks for contacting us. We'll get back to you as soon as possible.
+              </div>
+            {% endif %}
+
+            <div class='mb1 h4 cm'>
+              {{ form.errors | default_errors }}
+            </div>
+
+            {%
+            include 'input-text' with
+            className: 'mb1',
+            name: 'contact[name]',
+            label: 'Name*',
+            value: form[name],
+            required: true
+            %}
+
+            {%
+            include 'input-text' with
+            className: 'mb1',
+            type: 'email',
+            name: 'contact[email]',
+            label: 'Email*',
+            value: form.email,
+            required: true
+            %}
+
+            {%
+            include 'input-text' with
+            className: 'mb1',
+            name: 'contact[subject]',
+            label: 'Subject*',
+            value: form[subject],
+            required: true
+            %}
+
+            {%
+            include 'input-textarea' with
+            className: 'mb1',
+            name: 'contact[body]',
+            label: 'Message*',
+            value: form.body,
+            rows: '6',
+            required: true
+            %}
+
+            {%
+            include 'button' with
+            tag: 'button',
+            type: 'submit',
+            cta: 'Submit',
+            className: 'fill-h'
+            %}
+          {% endform %}
+        </div>
+
+        <div class='contact__visit contact__col'>
+          <h2 class='mt0 mb05 serif'>Visit us</h2>
+          <h4 class='mt0 serif'>
+            {{ section.settings.address | newline_to_br }}
+          </h4>
+
+          <div class='contact__map'>
+            {{ section.settings.map }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Contact",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "address",
+        "label": "Address"
+      },
+      {
+        "type": "textarea",
+        "id": "map",
+        "label": "Google Maps embed"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "contact",
+        "name": "Contact method",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Label"
+          },
+          {
+            "type": "text",
+            "id": "email",
+            "label": "Email"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+

@@ -1,0 +1,77 @@
+form {
+  margin: 0;
+}
+input,
+textarea,
+select {
+  display: block;
+  outline: 0;
+  border-radius: 0;
+  border: 1px solid var(--black);
+  position: relative;
+  font-size: inherit;
+  background-color: transparent;
+  padding: 0.7em 1.2em;
+}
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+  -webkit-appearance: none;
+}
+input,
+select {
+  height: 65px;
+}
+textarea {
+  max-width: 100%;
+  overflow: auto;
+  resize: vertical;
+}
+.input--reset {
+  height: auto;
+  padding: 0;
+}
+
+.input-wrapper {
+  position: relative;
+
+  &.has-error {
+    span {
+      border-color: red;
+    }
+  }
+
+  &.has-value {
+    label {
+      font-size: calc((10/16) * 1rem);
+      top: 11px;
+      z-index: 2;
+    }
+  }
+
+  textarea,
+  input {
+    border: 0;
+    z-index: 1;
+    /*background-color: transparent;*/
+    padding: .8em 1.4em 0.7em;
+  }
+
+  label {
+    display: block;
+    position: absolute;
+    top: 22px;
+    left: 18px;
+    z-index: 0;
+    color: var(--medium);
+    transition: all 100ms ease-in-out;
+  }
+
+  > span {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    border: 1px solid var(--gray);
+    transition: border-color 200ms ease-in-out;
+    z-index: 0;
+  }
+}

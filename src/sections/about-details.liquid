@@ -1,0 +1,49 @@
+<section data-section-id='{{ section.id }}' data-section-type='about-details-section'>
+  {% for block in section.blocks %}
+    {% assign detail = block.settings %}
+    {% assign multipleOfTwo = forloop.index | modulo: 2 %}
+
+    {% assign alternateLayout = false %}
+    {% if multipleOfTwo == 0 %}
+      {% assign alternateLayout = true %}
+    {% endif %}
+
+    {%
+    include 'about-detail' with
+    alternateLayout: alternateLayout,
+    image: detail.image,
+    title: detail.title,
+    description: detail.description
+    %}
+  {% endfor %}
+</section>
+
+{% schema %}
+  {
+    "name": "About Details",
+    "settings": [],
+    "blocks": [
+    {
+      "type": "detail",
+      "name": "Detail section",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+    ]
+  }
+{% endschema %}

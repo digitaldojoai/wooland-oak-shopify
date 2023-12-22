@@ -1,0 +1,44 @@
+.color-selector {
+  button {
+    height: 14px;
+    width: 14px;
+    margin-right: 1.5em;
+
+    &.is-selected,
+    &:focus,
+    &:hover {
+      outline: 0;
+      &::after {
+        transform: scale(1.5);
+        opacity: 0.2;
+      }
+    }
+
+    &::before,
+    &::after {
+      content:'';
+      position: absolute;
+      bottom: 0; left: 0; right: 0; top: 0;
+      border-radius: 100px;
+      transition: all var(--slow) var(--cubic);
+    }
+    &::before {
+      background-color: currentColor;
+    }
+    &::after {
+      transform: scale(1.1);
+      border: 2px solid currentColor;
+      opacity: 1;
+    }
+
+    &[disabled] {
+      opacity: 0.5;
+      cursor: default;
+      &::after {
+        transform: scale(1.1) !important;
+        border: 2px solid currentColor !important;
+        opacity: 1 !important;
+      }
+    }
+  }
+}

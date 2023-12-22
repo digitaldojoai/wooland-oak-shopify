@@ -1,0 +1,77 @@
+<div class="f fw jcb aic account">
+  <div class='account__col rel'>
+    <div class="abs fill obj-fit fill-h fill-v" style="background-image: url({{ 'account_register.jpg' | asset_url }})"></div>
+  </div>
+  <div class="account__col aic f" data-component='accounts'>
+    <div id="register" class="mha container--s px1">
+
+      <h1 class="h3 mb075 serif">Sign up</h1>
+
+      {% form 'create_customer', class: 'mha' %}
+        {% if form.posted_successfully? %}
+          <div class="alert_message bg-c2 px1 flex items-center mha align-l">
+            <div class="alert__icon mr1 flex">
+              <svg viewBox='0 0 18 18'>
+                <use xlink:Href="#checkmark" x='0' y='0'></use>
+              </svg>
+            </div>
+          </div>
+        {% endif %}
+
+        {% assign label = 'First Name' %}
+        {% assign name = 'customer[first_name]' %}
+        {% assign type = 'text' %}
+        {% assign placeholder = 'First Name' %}
+        {% include 'input-text' %}
+
+        {% assign label = 'Last Name' %}
+        {% assign name = 'customer[last_name]' %}
+        {% assign type = 'text' %}
+        {% assign placeholder = 'Last Name' %}
+        {% include 'input-text' %}
+
+        {% assign label = 'Email' %}
+        {% assign name = 'customer[email]' %}
+        {% assign type = 'email' %}
+        {% assign placeholder = 'Email' %}
+        {% if form.email %}
+          {% assign value = form.email %}
+        {% endif %}
+        {% include 'input-text' %}
+
+        {% assign label = 'Password' %}
+        {% assign name = 'customer[password]' %}
+        {% assign type = 'password' %}
+        {% assign placeholder = 'Password' %}
+        {% include 'input-text' %}
+
+        {% if form.errors %}
+          {% for field in form.errors %}
+            {% if field == 'form' %}
+              <p class="p0 c3 align-c">{{ form.errors.messages[field] }}</p>
+            {% else %}
+              <p class="p0 c3 align-c">{{ form.errors.translated_fields[field] | capitalize }} {{ form.errors.messages[field] }}.</p>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+        <!-- <p class="mt1 pt05">
+          <label class="checkbox">
+            <input type="checkbox" name="customer[accepts_marketing]">
+            Subscribe to our newsletter
+          </label>
+        </p> -->
+
+        <div class="mv1 pv05">
+          <button onClick='(function({dataLayer.push({'event': 'register'})}))' type="submit" class="button button--shadow rel f aic jcc sans caps track button--orange fill-h" role="button">
+            <span class="f aic jcc">Sign up</span>
+          </button>
+        </div>
+      {% endform %}
+
+      <span class="block mt1 f jcs aic">
+        Already have an account? <a class="ml05 underline underline--black block" href="/account/login">Log in.</a>
+      </span>
+    </div>
+  </div>
+</div>

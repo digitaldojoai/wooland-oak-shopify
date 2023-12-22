@@ -1,0 +1,249 @@
+
+<div data-component='accounts' />
+
+<div class='account__single bgg'>
+  <section class=' z1 rel'>
+    <div class='rel pt2'>
+      <div class='outer pv2 ac mha container--l'>
+
+        {% paginate customer.addresses by 5 %}
+
+          <header role="banner">
+            <h1 class='serif mb05'>{{ 'customer.account.title' | t }}</h1>
+            <span  class="underline pointer caps s1 bold co px0 mx0 address-new-toggle">{{ 'customer.addresses.add_new' | t }}</span>
+          </header>
+
+          <div id="AddressNewForm" class="hide">
+            {% form 'customer_address', customer.new_address %}
+            <div class='account__form mt2 '>
+              <input type="text"
+                     name="address[first_name]"
+                     id="AddressFirstNameNew"
+                     placeholder="First Name"
+                     value="{{ form.first_name }}"
+                     autocapitalize="words">
+
+              <input type="text"
+                     name="address[last_name]"
+                     id="AddressLastNameNew"
+                     placeholder="Last Name"
+                     value="{{ form.last_name }}"
+                     autocapitalize="words">
+
+              <input type="text"
+                     name="address[company]"
+                     id="AddressCompanyNew"
+                     placeholder="Company"
+                     value="{{ form.company }}"
+                     autocapitalize="words">
+
+              <input type="text"
+                     name="address[address1]"
+                     id="AddressAddress1New"
+                     placeholder="Address"
+                     value="{{ form.address1 }}"
+                     autocapitalize="words">
+
+              <input type="text"
+                     name="address[address2]"
+                     id="AddressAddress2New"
+                     placeholder="Address 2"
+                     value="{{ form.address2 }}"
+                     autocapitalize="words">
+
+              <input type="text"
+                     name="address[city]"
+                     id="AddressCityNew"
+                     placeholder="City"
+                     value="{{ form.city }}"
+                     autocapitalize="words">
+
+              <select
+                name="address[country]"
+                id="AddressCountryNew"
+                placeholder="Country"
+                data-default="{{ form.country }}">
+                {{ country_option_tags }}
+              </select>
+
+              <div id="AddressProvinceContainerNew" style="display: none">
+                <select
+                  name="address[province]"
+                  id="AddressProvinceNew"
+                  data-default="{{ form.province }}">
+                </select>
+              </div>
+
+              <input type="text"
+                     name="address[zip]"
+                     id="AddressZipNew"
+                     placeholder="Postal/Zip"
+                     value="{{ form.zip }}"
+                     autocapitalize="characters">
+
+              <input type="tel"
+                     name="address[phone]"
+                     id="AddressPhoneNew"
+                     placeholder="(333) 333-3333"
+                     value="{{ form.phone }}"
+                     pattern="[0-9\-]*">
+
+            </div>
+            <div class='mv2'>
+              {%
+              include 'button' with
+              tag: 'button',
+              type: 'submit',
+              className: 'mh05',
+              cta: 'Add Address',
+              %}
+
+              {%
+              include 'button' with
+              tag: 'button',
+              light: true,
+              className: 'address-new-toggle mh05',
+              cta: 'Cancel',
+              %}
+            </div>
+
+            {{ form.set_as_default_checkbox }}
+            <label for="address_default_address_new">
+              {{ 'customer.addresses.set_default' | t }}
+            </label>
+
+            {% endform %}
+
+          </div>
+
+          <h4>{{ 'customer.addresses.title' | t }}</h4>
+
+          {% for address in customer.addresses %}
+
+            {% if address == customer.default_address %}
+              <p><strong>{{ 'customer.addresses.default' | t }}</strong></p>
+            {% endif %}
+
+            <div class='bgw al px2 caps s1 account__card'>
+              {{ address | format_address }}
+
+              <button type="button" class="address-edit-toggle" data-form-id="{{ address.id }}">
+                {{ 'customer.addresses.edit' | t }}
+              </button>
+              <button type="button" class="address-delete" data-form-id="{{ address.id }}" data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}">
+                {{ 'customer.addresses.delete' | t }}
+              </button>
+            </div>
+
+
+            <div id="EditAddress_{{ address.id }}" class="hide">
+              {% form 'customer_address', address %}
+
+              <h4>{{ 'customer.addresses.edit_address' | t }}</h4>
+
+              <div class='account__form mt2 '>
+                <input type="text"
+                       name="address[first_name]"
+                       placeholder="First Name"
+                       id="AddressFirstName_{{ form.id }}"
+                       value="{{ form.first_name }}"
+                       autocapitalize="words">
+
+                <input type="text"
+                       name="address[last_name]"
+                       id="AddressLastName_{{ form.id }}"
+                       value="{{ form.last_name }}"
+                       autocapitalize="words">
+
+                <input type="text"
+                       name="address[company]"
+                       id="AddressCompany_{{ form.id }}"
+                       value="{{ form.company }}"
+                       autocapitalize="words">
+
+                <input type="text"
+                       name="address[address1]"
+                       id="AddressAddress1_{{ form.id }}"
+                       value="{{ form.address1 }}"
+                       autocapitalize="words">
+
+                <input type="text"
+                       name="address[address2]"
+                       id="AddressAddress2_{{ form.id }}"
+                       value="{{ form.address2 }}"
+                       autocapitalize="words">
+
+                <input type="text"
+                       name="address[city]"
+                       id="AddressCity_{{ form.id }}"
+                       value="{{ form.city }}"
+                       autocapitalize="words">
+
+                <select
+                  name="address[country]"
+                  id="AddressCountry_{{ form.id }}"
+                  class="address-country-option"
+                  data-form-id="{{ form.id }}"
+                  data-default="{{ form.country }}">
+                  {{ country_option_tags }}
+                </select>
+
+                <div id="AddressProvinceContainer_{{ form.id }}" style="display: none">
+                  <select
+                    name="address[province]"
+                    id="AddressProvince_{{ form.id }}"
+                    data-default="{{ form.province }}">
+                  </select>
+                </div>
+
+                <input type="text"
+                       name="address[zip]"
+                       id="AddressZip_{{ form.id }}"
+                       value="{{ form.zip }}"
+                       autocapitalize="characters">
+
+                <input type="tel"
+                       name="address[phone]"
+                       id="AddressPhone_{{ form.id }}"
+                       value="{{ form.phone }}"
+                       pattern="[0-9\-]*">
+              </div>
+
+              <div class='mv2'>
+                {%
+                include 'button' with
+                tag: 'button',
+                type: 'submit',
+                className: 'mh05',
+                cta: 'Update Address',
+                %}
+
+                {%
+                include 'button' with
+                tag: 'button',
+                light: true,
+                className: 'address-update-toggle mh05',
+                cta: 'Cancel',
+                %}
+              </div>
+
+              <div class='checkbox'>
+                {{ form.set_as_default_checkbox }}
+                <label for="address_default_address_{{ form.id }}">
+                  {{ 'customer.addresses.set_default' | t }}
+                </label>
+              </div>
+              {% endform %}
+
+            </div>
+          {% endfor %}
+
+          {% if paginate.pages > 1 %}
+            {% include 'pagination' %}
+          {% endif %}
+
+        {% endpaginate %}
+      </div>
+    </div>
+  </section>
+</div>

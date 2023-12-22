@@ -1,0 +1,35 @@
+<section data-section-id='{{ section.id }}' data-section-type='intro-section'>
+  <div class='intro outer'>
+    <div class='intro__inner f aic fw jcc ac'>
+      <img class='intro__img' src='{{ section.settings.img | img_url: '250x' }}' />
+      <hr />
+      <div class='container--s'>
+        <h3 class='intro__text serif mv0'>{{ section.settings.text }}</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Intro",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "img",
+      "label": "Image"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Intro",
+      "category": "Misc"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,91 @@
+:root {
+  --black: #001020;
+  --medium: #868E96;
+  --gray: #F9F9F9;
+  --gray-light: rgba(255,255,255,0.5);
+  --gray-medium: #EAEAEA;
+  --gray-dark: #999999;
+  --gray-border: #E7E7E7;
+  --yellow: #EE7F4B;
+  --sand: #CC7544;
+  --ruby: #BB3136;
+  --orange: #D0693C;
+  --orange-dark: #BA5E36;
+  --blue: #005C88;
+  --beige: #F4F2ED;
+  --forest: #3B6443;
+}
+
+.cw {
+  color: white;
+}
+.cb {
+  color: var(--black);
+}
+.cbeige {
+  color: var(--beige)
+}
+.cbl {
+  color: var(--blue)
+}
+.cg {
+  color: var(--gray);
+}
+.co {
+  color: var(--orange);
+}
+.cgd {
+  color: var(--gray-dark);
+}
+.cgl {
+  color: var(--gray-light);
+}
+.cggb {
+  color: var(--gray-border);
+}
+.cm {
+  color: var(--medium);
+}
+.cy {
+  color: var(--yellow);
+}
+
+.bgb {
+  background-color: var(--black);
+}
+.bgbb {
+  background-color: var(--blue);
+}
+.bgbeige {
+  background-color: var(--beige);
+}
+.bgw {
+  background-color: white;
+}
+.bgo {
+  background-color: var(--orange);
+}
+.bgf {
+  background-color: var(--forest);
+}
+.bgbl {
+  background-color: var(--blue);
+}
+.bgg {
+  background-color: var(--gray);
+}
+.bggb {
+  background-color: var(--gray-border);
+}
+.bggl {
+  background-color: var(--gray-light);
+}
+.bggm {
+  background-color: var(--gray-medium);
+}
+.bgm {
+  background-color: var(--medium);
+}
+.bgy {
+  background-color: var(--yellow);
+}

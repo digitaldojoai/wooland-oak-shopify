@@ -1,0 +1,83 @@
+<section data-section-id='{{ section.id }}' data-section-type='events-section'>
+  <div class='outer page-spacing-vertical'>
+    <div class='container'>
+      <div class='events'>
+        <div class='events__upcoming'>
+          <h2 class='mt0 mb075 serif'>Upcoming Events</h2>
+
+          <ul class='events__row f ais fw'>
+            {% for block in section.blocks %}
+              {% if block.type == 'upcoming' %}
+                {% assign event = block.settings %}
+                <li class='events__event mb1'>
+                  <h6 class='mt0 mb05 xsmall sans caps track demi cm'>{{ event.label }}</h6>
+                  <p class='h4 mv0 serif'>{{ event.title }}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+
+        <hr class='cg' />
+
+        <div class='events__past'>
+          <h2 class='mt0 mb075 serif'>Past Events</h2>
+
+          <ul class='events__row f ais fw'>
+            {% for block in section.blocks %}
+              {% if block.type == 'past' %}
+                {% assign event = block.settings %}
+                <li class='events__event mb1'>
+                  <h6 class='mt0 mb05 xsmall sans caps track demi cm'>{{ event.label }}</h6>
+                  <p class='h4 mv0 serif'>{{ event.title }}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Events",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "upcoming",
+        "name": "Upcoming event",
+        "settings": [
+          {
+            "type": "text",
+            "id": "label",
+            "label": "label"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "title"
+          }
+        ]
+      },
+      {
+        "type": "past",
+        "name": "Past event",
+        "settings": [
+          {
+            "type": "text",
+            "id": "label",
+            "label": "label"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "title"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+

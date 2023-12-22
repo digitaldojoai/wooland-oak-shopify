@@ -1,0 +1,52 @@
+{% capture cx %}
+  two rel
+  {% if slideshow == true %}is-within-slideshow{% endif %}
+{% endcapture %}
+
+<div class='{% include 'u-cx' with cx %}'>
+  <div class='two__img rel fill-h js-img bggl'>
+    {% include 'image-fill' with image: image, className: 'two__img__inner' %}
+
+    <div class='two__label abs'>
+      <div class='two__label__inner abs f aic bottom left'>
+        <h6 class='mv0 track sans pr1 mr1 caps book small'>{{ label }}</h6>
+        <hr />
+      </div>
+    </div>
+  </div>
+  <div class='two__content rel ac mha f aic'>
+    <div class='two__content__inner outer outer--v mha js-content'>
+      <h2 class='h1 serif demi mt0 mb025'>{{ title }}</h2>
+      <p class='h4 mt0 mb1'>{{ description }}</p>
+
+      <div class='two__ctas pt05 f aic fw jcc'>
+        {% if cta %}
+          {%
+            include 'button' with
+            className: 'fill-h',
+            tag: 'a',
+            cta: cta,
+            href: url,
+            outline: true,
+            inherit: true
+          %}
+        {% endif %}
+        {% for cta in ctas %}
+          {% if cta.type == 'cta' %}
+            {% assign button = cta.settings %}
+
+            {%
+              include 'button' with
+              className: 'fill-h',
+              tag: 'a',
+              cta: button.cta,
+              href: button.url,
+              outline: true,
+              inherit: true
+            %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

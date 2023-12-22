@@ -1,0 +1,20 @@
+{% capture cx %}
+  about-detail
+  {{ className }}
+  {% if alternateLayout == true %}is-alternate-layout{% endif %}
+{% endcapture%}
+<div class='{% include 'u-cx' with cx %}'>
+  <div class='about-detail__container rel f aic jcb fw'>
+    <div class='about-detail__img rel fill-h'>
+      {% include 'image-fill' with image: image %}
+    </div>
+
+    <div class='about-detail__content f aic jcc fw fill-v fill-h outer'>
+      <div class='about-detail__content__inner mv1 pv1'>
+        <h3 class='h1 serif mv05'>{{ title }}</h3>
+        <p class='h4 mt0 mb1'>{{ description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+

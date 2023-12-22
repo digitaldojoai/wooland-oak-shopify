@@ -1,0 +1,35 @@
+<section class='cart-drawer-outer fix fill z10' data-component='cart-drawer'>
+  <div class='cart-drawer-overlay abs fill bgb js-overlay'></div>
+  <div class='cart-drawer fill-h abs top right bottom bgw js-drawer f'>
+    <header class='outer fill-h abs top left f aic bgw z1 js-close'>
+      <div class='f aic rel fill-h'>
+        <button class='abs left button--reset'>
+          {% include 'icon-chevron' with left: true, className: 'abs mxa fill' %}
+        </button>
+
+        <h4 class='mv0 serif p2 ac fill-h'>Your Bag</h4>
+      </div>
+    </header>
+
+    <div class='cart-drawer__items outer outer--v bgg fill-v fill-h'>
+      <div class='rel fill-v fill-h'  style='padding-bottom: 40px;'>
+        <div class='js-items' />
+      </div>
+        <div class='js-upsells' />
+      </div>
+    </div>
+
+    <footer class='outer outer--v abs bottom left right bgg'>
+      <h5 class='mv1 sans track ac medium'>Subtotal: <span class='js-subtotal'>$-.--</span></h5>
+
+      {%
+      include 'button' with
+      tag: 'a',
+      cta: 'Checkout',
+      href: '/checkout',
+      className: 'fill-h no-ajax button--orange'
+      %}
+      <p class='small cm ac'>We Ship Everywhere</p>
+    </footer>
+  </div>
+</section>

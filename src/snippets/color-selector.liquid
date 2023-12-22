@@ -1,0 +1,24 @@
+{% capture cx %}
+  color-selector
+  {{ className }}
+{% endcapture %}
+<div class='{% include 'u-cx' with cx %}'>
+  {% for variant in colors %}
+    {% assign color = variant.option1 %}
+    {% assign title = color | split: ':' | first %}
+    {% assign hex = color | split: ':' | last %}
+
+    {% capture cx %}
+      button--reset rel js-color
+      {% if color == initialValue %}is-selected{% endif %}
+    {% endcapture %}
+
+    <button class='{% include 'u-cx' with cx %}'
+      style='color: #{{ hex }}'
+      data-color='{{ color }}'
+      data-id='{{ variant.id }}'
+      data-image='{{ variant.image }}'
+      type='button'
+      {% unless variant.available %}disabled{% endunless %}></button>
+  {% endfor %}
+</div>

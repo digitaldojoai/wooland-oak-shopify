@@ -1,0 +1,63 @@
+<section data-section-id='{{ section.id }}' data-section-type='two-section'>
+  {%
+    include 'two' with
+    title: section.settings.title,
+    description: section.settings.description,
+    image: section.settings.image,
+    label: section.settings.label,
+    ctas: section.blocks
+  %}
+</section>
+
+{% schema %}
+  {
+    "name": "Two",
+    "settings": [
+      {
+        "type": "text",
+        "id": "label",
+        "label": "Sidebar label"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "cta",
+        "name": "CTA",
+        "limit": 2,
+        "settings": [
+          {
+            "type": "text",
+            "id": "cta",
+            "label": "CTA"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "URL"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Two",
+        "category": "Features"
+      }
+    ]
+  }
+{% endschema %}

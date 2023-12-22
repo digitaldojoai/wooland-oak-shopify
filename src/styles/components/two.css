@@ -1,0 +1,126 @@
+@custom-media --two-component (min-width: 65.63em); /* 1050px */
+
+.two {
+  margin-top: 1.5em;
+  margin-bottom: 50px;
+
+  @media (--l) {
+    margin-top: 120px;
+    margin-bottom: 120px;
+  }
+}
+.two__img {
+  height: 411px;
+
+  @media (--two-component) {
+    height: 100%;
+    position: absolute;
+    bottom: 0; left: 0; top: 0;
+    width: 80%;
+  }
+}
+.two__content {
+  @media (--two-component) {
+    height: 725px;
+    margin-left: 50%;
+    width: 50%;
+    text-align: left;
+  }
+}
+.two__content__inner {
+  max-width: calc(500px + 3em); /* plus .outer padding */
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  @media (--two-component) {
+    padding-top: 150px;
+    padding-bottom: 150px;
+  }
+}
+.two__ctas {
+  @media (--two-component) {
+    justify-content: flex-start;
+  }
+
+  a[role='button'] {
+    width: 100%;
+    @media (--s) {
+      width: auto;
+      margin: 0 1em;
+    }
+    @media (--two-component) {
+      margin: 0 2em 0 0;
+    }
+  }
+  a[role='button']:nth-of-type(2) {
+    margin-top: 1.5em;
+    @media (--s) {
+      margin-top: 0;
+    }
+  }
+}
+.two__label {
+  width: 22px;
+  overflow: hidden;
+  top: 100px;
+  bottom: 100px;
+  left: 100px;
+  display: none;
+
+  @media (--two-component) {
+    display: block;
+  }
+}
+.two__label__inner {
+  width: 100vw;
+  transform: rotate(-90deg);
+  transform-origin: 0 0;
+  white-space: nowrap;
+
+  hr {
+    opacity: 0.2;
+  }
+}
+
+/**
+ * Only for the slideshow on
+ * the homepage
+ */
+.is-within-slideshow {
+  margin: 0;
+  position: static; /* defer to .slideshow parent */
+
+  .two__img__inner,
+  .two__content {
+    transition: all var(--fast) var(--ease);
+  }
+
+  @media (--two-component) {
+    .two__img {
+      left: auto; right: 0;
+    }
+    .two__label {
+      left: auto; right: 100px;
+    }
+    .two__content {
+      margin-left: 0;
+      height: 585px;
+      display: flex;
+      align-items: center;
+    }
+    .two__content__inner {
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+    .two__label {
+      transform: rotate(180deg);
+    }
+  }
+
+  .is-transitioning & {
+    .two__img__inner img,
+    .two__content {
+      opacity: 0;
+    }
+  }
+}

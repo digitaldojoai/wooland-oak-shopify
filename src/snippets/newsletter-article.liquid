@@ -1,0 +1,33 @@
+{% if border == true%}
+<div class='bgw'>
+  <div class='container--s mha '>
+    <hr class='cggb' />
+  </div>
+</div>
+{% endif %}
+
+<div class='bgw newsletter__article px2'>
+  <div class='container--s mha pv2 ac'>
+    <p class='cb serif p4'>Enter your email and stay up to date on all our new adventures</p>
+    <form action='{{ settings.newsletter_action }}' class='newsletter__form inline-block mha fill-h' data-component='newsletter'>
+      <div class=' rel'>
+        <input type='email' name='email' class='fill-h sans light small ac' placeholder='Enter your email' />
+
+        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="" tabindex="-1" value=""></div>
+
+        {%
+        include 'button' with
+        tag: 'button',
+        type: 'submit',
+        cta: '',
+        %}
+
+        <div class='newsletter__success abs fill fill-v f aic jcc bggl js-success' style='display: none;'>
+          <h6 class='mv0 sans track'>Success</h6>
+        </div>
+      </div>
+
+      <span class='h6 i cb js-error mt05' style='display: none'></span>
+    </form>
+  </div>
+</div>

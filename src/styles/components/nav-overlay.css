@@ -1,0 +1,16 @@
+.nav-overlay {
+  height: 100vh;
+  display: none;
+  opacity: 0;
+  transition: all var(--fast) var(--ease);
+
+  @media (--m) {
+    display: none !important;
+  }
+
+  a {
+    &:focus {
+      outline: 1px dashed white;
+    }
+  }
+}

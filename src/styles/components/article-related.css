@@ -1,0 +1,36 @@
+.article__related {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  @media (--m) {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .__title {
+    margin-bottom: 40px;
+    @media (--m) {
+      margin-bottom: 60px;
+    }
+  }
+
+  .__products {
+    margin-left: -1em;
+    margin-right: -1em;
+
+    .product-card {
+      padding-left: 1em;
+      padding-right: 1em;
+      width: 50%;
+
+      @media (--m) {
+        width: 25%;
+      }
+    }
+  }
+}
+
+.article__related {
+  .product__related {
+    background-color: var(--gray);
+  }
+}

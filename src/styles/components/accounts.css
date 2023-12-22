@@ -1,0 +1,41 @@
+.account {
+  &__single {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    @media (--m) {
+      padding-top: 80px;
+    }
+  }
+
+  &__form {
+
+    input {
+      width: 100%;
+      background-color: white;
+      margin-bottom: 10px;
+      border: 1px solid var(--orange);
+    }
+    select {
+      width: 100%;
+      border-radius: 0;
+      border: 1px solid var(--orange);
+    }
+    @media (--m) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      input, select {
+        width: 49.5%;
+      }
+    }
+  }
+  &__card {
+    border: 1px solid var(--orange);
+  }
+}
+input#address_default_address_new,
+.checkbox input {
+  height: auto;
+  width: auto;
+  display: inline-block;
+}

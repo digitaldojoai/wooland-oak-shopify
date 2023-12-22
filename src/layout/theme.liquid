@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang='{{ shop.locale }}'>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
+    <meta name='theme-color' content='{{ settings.color_primary }}'>
+    <link rel='canonical' href='{{ canonical_url }}'>
+    <link rel='apple-touch-icon' sizes='180x180' href='{{ 'apple-touch-icon.png' | asset_url }}'>
+    <link rel='icon' type='image/png' sizes='32x32' href='{{ 'favicon-32x32.png' | asset_url }}'>
+    <link rel='icon' type='image/png' sizes='16x16' href=''{{ 'favicon-16x16.png | asset_url }}'>
+    <link rel='manifest' href='{{ 'manifest.json' | asset_url }}'>
+    <link rel='mask-icon' href='{{ 'safari-pinned-tab.svg' | asset_url }}' color='#f48025'>
+
+
+    <meta property="og:title" content="{{ page_title }}" />
+    <meta property="og:url" content="{{ canonical_url }}" />
+
+    <meta name='theme-color' content='#ffffff'>
+
+    <!-- Polyfill for legacy browsers -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+
+    <script>
+      (function(d) {
+        var config = {
+          kitId: 'bzc2xlu',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
+
+    {% capture seo_title %}
+      {{ page_title }}
+      {% if current_tags %}
+        {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+      {% endif %}
+      {% if current_page != 1 %}
+        &ndash; {{ 'general.meta.page' | t: page: current_page }}
+      {% endif %}
+      {% unless page_title contains shop.name %}
+        &ndash; {{ shop.name }}
+      {% endunless %}
+    {% endcapture %}
+    <title>{{ seo_title }}</title>
+
+    {% include 'head-meta' %}
+
+    <!-- Start of woolandoak Zendesk Widget script -->
+    <script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(e){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var e=this.createElement("script");n&&(this.domain=n),e.id="js-iframe-async",e.src="https://assets.zendesk.com/embeddable_framework/main.js",this.t=+new Date,this.zendeskHost="woolandoak.zendesk.com",this.zEQueue=a,this.body.appendChild(e)},o.write('<body onload="document._l();">'),o.close()}();
+    /*]]>*/</script>
+    <!-- End of woolandoak Zendesk Widget script -->
+
+
+    <script type="text/javascript" src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"></script>
+
+    <!-- Segment data1 -->
+      <script>
+      !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="4.0.0";
+      analytics.load("fNlfZsz3PQLevMolKqGptGfYcmqLWmA4");
+      analytics.page();
+      }}();
+    </script>
+
+    <!-- Segement data1 end -->
+
+    <!-- Segment data2 -->
+
+    <script type="text/javascript">
+      // identify the customer if they have an account
+      {% if customer.id %}
+      window.analytics.identify("{{customer.id}}", {
+        name: "{{ customer.name }}",
+        firstName: "{{ customer.first_name }}",
+        lastName: "{{ customer.last_name }}",
+        email: "{{ customer.email }}",
+        phone: "{{ customer.default_address.phone }}",
+        address: {  // uses the default address
+          street: "{{ customer.default_address.street }}",
+          city: "{{ customer.default_address.city }}",
+          state: "{{ customer.default_address.province }}",
+          stateCode: "{{ billing_address.province_code }}",
+          postalCode: "{{ customer.default_address.zip }}",
+          country: "{{ customer.default_address.country }}",
+          countryCode: "{{ customer.default_address.country_code }}"
+        },
+        totalSpent: "{{ customer.total_spent }}",
+        allOrdersCount: "{{ customer.orders_count }}",
+        allOrderIds: [{% for order in customer.orders %}"{{ order.id }}",{% endfor %}],
+        tags: [{% for tag in customer.tags %} "{{ tag }}", {% endfor %}]
+      });
+      {% endif %}
+      window.analytics.page();
+    </script>
+
+
+    <!-- Segment data2 end -->
+
+    <!-- klaviyo start  -->
+      <script type="text/javascript">
+        var _learnq = _learnq || [];
+
+        _learnq.push(['account', 'L9gjwE']);
+
+        (function () {
+        var b = document.createElement('script'); b.type = 'text/javascript'; b.async = true;
+        b.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'a.klaviyo.com/media/js/analytics/analytics.js';
+        var a = document.getElementsByTagName('script')[0]; a.parentNode.insertBefore(b, a);
+        })();
+      </script>
+    <!-- klaviyo end  -->
+
+    <!-- Yotpo -->
+    <script type="text/javascript">
+      (function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/aytD7aQu7A8C4l8iF6nStB0B3WhqiP58MnRX1Ro8/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+    </script>
+    <!-- End Yotpo -->
+
+    <meta name="google-site-verification" content="i4ktzaKNwrO2YHVO-x2xtbHkRElsdpXR3zoGTQ03vEQ" />
+
+
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+    {% if template.directory == 'customers' %}
+      <script src='{{ 'shopify_common.js' | shopify_asset_url }}' defer='defer'></script>
+    {% endif %}
+
+    {{ 'main.css' | asset_url | stylesheet_tag }}
+
+    {{ content_for_header }}
+
+    {{ settings.external_scripts }}
+
+
+  </head>
+  <body id='{{ page_title | handle }}' class='{{ current_page }}'>
+    {% section 'header' %}
+
+    <main role='main' id='root'>
+      {{ content_for_layout }}
+      {% section 'footer' %}
+    </main>
+
+    {% include 'nav-overlay' %}
+    {% include 'cart-drawer' %}
+
+    {{ 'slater.css' | asset_url | stylesheet_tag }}
+    <!-- {% comment %} QuadPay: Older Browsers {% endcomment %} -->
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.4/webcomponents-loader.js"
+      type="application/javascript"></script>
+    <script defer nomodule src="https://widgets.quadpay.com/es5/quadpay-widget-2.2.1.js"
+      type="application/javascript"></script>
+    <!-- {% comment %} QuadPay: Modern Browsers {% endcomment %} -->
+    <script async src="https://widgets.quadpay.com/quadpay-widget-2.2.1.js" type="application/javascript"></script>
+
+    <script src='{{ 'index.js' | asset_url }}'></script>
+
+    <!-- <script src='https://unpkg.com/@slater/reload@0.0.9/dist/index.js'></script>
+    <script src='https://localhost:3000/index.js'></script>  -->
+
+  </body>
+</html>

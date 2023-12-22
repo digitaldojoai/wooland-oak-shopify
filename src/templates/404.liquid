@@ -1,0 +1,34 @@
+{% assign image = '404.jpg' | file_url %}
+
+{% include 'theme-provider' with theme: 'light' %}
+
+<div class='hero hero--404 rel f aic jcc'>
+  {% include 'image-fill' with image: '//images.contentful.com/mhcx2sypq9if/2FjzCj8lnyS6iaCyekCwS4/f99cf1dd6fc79b27dfb354e3543805cf/our-journey-hero.jpg' %}
+
+  <div class='container--xl mha rel fill-h'>
+    <div class='outer'>
+      {% capture cx %}
+        hero__content mha ac
+        cw
+      {% endcapture %}
+
+      <div class='{% include 'u-cx' with cx %}'>
+        <div class='hero__banner small sans caps track f aic jcc book'>
+          <span>404 Not Found</span>
+          <hr class='fa' />
+        </div>
+
+        <h1 class='mv0 serif mv025'>We're sorry, but this page does not exist.</h1>
+
+        {%
+        include 'button' with
+        href: '/',
+        cta: 'Go to Home',
+        className: 's5',
+        small: true,
+        light: true
+        %}
+      </div>
+    </div>
+  </div>
+</div>

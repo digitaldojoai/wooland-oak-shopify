@@ -1,0 +1,150 @@
+button {
+  border: 0;
+  border-radius: 0;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-appearance: none;
+  background: transparent;
+  color: inherit;
+  box-shadow: none;
+}
+
+/**
+ * Default is black fill
+ * with white text
+ */
+button.button,
+.button[role="button"],
+input.button[type="submit"] {
+  display: inline-block;
+  height: 65px;
+  font-size: calc((13/16) * 1rem);
+  font-weight: bold;
+  /*box-shadow: var(--shadow);*/
+  /*max-width: 280px;*/
+  margin-left: auto;
+  margin-right: auto;
+  outline: none;
+  transition: all var(--fast) var(--ease);
+  background: var(--orange);
+  color: white;
+  box-shadow: var(--shadow);
+
+  span {
+    height: 100%;
+    width: 100%;
+    padding: 0.7em 2.2em;
+    min-width: 100%;
+    min-width: 300px;
+    letter-spacing: 0.1rem;
+    /*display: inline-block;*/
+    transition: all .25s var(--ease);
+    @media (--m) {
+      min-width: 300px;
+      padding: 0.7em 3.2em;
+    }
+  }
+
+  &:hover {
+    background: var(--orange-dark);
+    box-shadow: none;
+    /*box-shadow: var(--shadow);*/
+  }
+
+  &.button--product {
+    width: 100%;
+  }
+
+  &.button--blue {
+    background-color: var(--blue);
+    &:hover {
+      span {
+        background-color: var(--orange);
+        color: white;
+      }
+    }
+  }
+
+  &.button--outline {
+    background: transparent !important;
+    border: 1px solid var(--orange);
+    color: var(--orange);
+    box-shadow: none;
+    background-color: white;
+
+    &:hover {
+      border-color: var(--orange);
+      span {
+        background: var(--orange);
+        color: white;
+      }
+    }
+  }
+  &.button--orange {
+    background-color: var(--orange);
+    &:hover {
+      box-shadow: var(--shadow);
+      background-color: var(--orange-dark);
+      span {
+        color: white;
+      }
+    }
+  }
+  &.button--light {
+    background-color: white;
+    span {
+      color: var(--orange);
+    }
+    &:hover {
+      background-color: var(--orange);
+      span {
+        color: white;
+      }
+    }
+
+    &.button--outline {
+      border-color: #fff;
+      color: #fff;
+
+      &:hover {
+        span {
+          background: white;
+          color: var(--black);
+        }
+      }
+    }
+  }
+  &.button--compact {
+    /* adjust padding */
+  }
+
+  /**
+   * Was forcing dev to opt in to
+   * inheritance, but now doing it
+   * by default
+   */
+}
+
+button.button--reset {
+  padding: 0;
+  font-size: 100%;
+}
+
+.button__group {
+  /*padding: 14px;*/
+  display: inline-block;
+  box-shadow: var(--shadow);
+  &_s {
+    cursor: pointer;
+    font-size: calc((12/16) * 1rem);
+    transition: all .25s;
+    letter-spacing: 0.05rem;
+    &:hover {
+      background-color: var(--orange);
+      color: white;
+      &.blue {
+        background-color: var(--blue);
+      }
+    }
+  }
+}

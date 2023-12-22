@@ -1,0 +1,8 @@
+<article role="article" itemscope itemtype="http://schema.org/Article" data-component='article' style="min-height: 130vh">
+</article>
+
+{% assign handles = article.content | split: ',' %}
+
+{% include 'newsletter-article' with border: true %}
+
+<div data-component='you-may-also' class='article__related'></div>

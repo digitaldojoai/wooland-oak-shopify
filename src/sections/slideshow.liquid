@@ -1,0 +1,97 @@
+{% assign block = section.blocks | first %}
+{% assign slide = block.settings %}
+
+<section data-section-id='{{ section.id }}' data-section-type='slideshow-section'>
+  <div class='slideshow rel' data-component='slideshow'>
+
+    {%
+    include 'two' with
+    label: section.settings.label,
+    image: slide.image,
+    title: slide.title,
+    description: slide.description,
+    cta: slide.cta,
+    url: slide.url,
+    slideshow: true
+    %}
+
+    <div class='slideshow__ctrls abs fill'>
+      <div class='slideshow__ctrl abs right bottom cw'>
+        <button class='js-next'>{% include 'icon-chevron' %}</button>
+        <button class='js-prev'>{% include 'icon-chevron' with left: true %}</button>
+      </div>
+    </div>
+
+    <script type='text/template'>
+      [
+        {% for block in section.blocks %}
+          {% assign slide = block.settings %}
+          {
+            "title": {{ slide.title | json }},
+            "description": {{ slide.description | json }},
+            "image": {{ slide.image | json }},
+            "cta": {{ slide.cta | json }},
+            "url": {{ slide.url | json }}
+          }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    </script>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Product slideshow",
+    "settings": [
+      {
+        "type": "text",
+        "id": "label",
+        "label": "Sidebar label"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "slide",
+        "name": "Slide",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "cta",
+            "label": "CTA"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "URL"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product slideshow",
+        "category": "Homepage",
+        "blocks": [
+          {
+            "type": "slide"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

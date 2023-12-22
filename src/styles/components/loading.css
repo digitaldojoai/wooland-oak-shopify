@@ -1,0 +1,28 @@
+.loading {
+  top: 0 !important;
+  left: 0;
+  position: fixed;
+  height: 150vh;
+  width: 100vw;
+  background-color: white;
+  z-index: 100;
+  opacity: 1;
+  transition: all .25s;
+  &.fading {
+    opacity: 0;
+  }
+  &.loaded {
+    z-index: -10;
+  }
+}
+
+.page-min {
+  min-height: 150vh;
+}
+.lazy__image {
+  transition: opacity.3s;
+  opacity: 0;
+  &.is-loaded {
+    opacity: 1;
+  }
+}

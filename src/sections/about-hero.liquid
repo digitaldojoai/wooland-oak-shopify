@@ -1,0 +1,61 @@
+{% if section.settings.theme == 'light' %}
+  {% assign themeLight = true %}
+{% else %}
+  {% assign themeLight = false %}
+{% endif %}
+
+{% include 'theme-provider' with theme: section.settings.theme %}
+
+<section data-section-id='{{ section.id }}' data-section-type='about-hero-section'>
+  <div class='about-hero rel f aic jcc'>
+    {% include 'image-fill' with image: section.settings.image, size: '2400x' %}
+
+    {% capture cx %}
+      ac
+      {% if themeLight %}cw{% endif %}
+    {% endcapture %}
+
+    <div class='container rel fill-h'>
+      <div class='outer'>
+        <div class='{% include 'u-cx' with cx %}'>
+          <h1 class='h0 mv0 serif'>{{ section.settings.headline }}</h1>
+          {%
+          include 'underline-link' with
+          className: 'mt1',
+          url: section.settings.url,
+          cta: section.settings.cta
+          %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "About Hero",
+    "settings": [
+      {
+        "type": "radio",
+        "id": "theme",
+        "label": "Theme",
+        "options": [
+          { "value": "dark", "label": "Dark" },
+          { "value": "light", "label": "Light" }
+        ],
+        "default": "dark"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "Should be a compressed JPG, about 2200px wide"
+      },
+      {
+        "type": "text",
+        "id": "headline",
+        "label": "Headline"
+      }
+    ]
+  }
+{% endschema %}

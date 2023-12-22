@@ -1,0 +1,30 @@
+.referral {
+  padding-bottom: 40px;
+  @media (--m) {
+    padding-top: 0px;
+    padding-bottom: 80px;
+  }
+  &__block {
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    @media (--m) {
+      width: 50%;
+    }
+    &:first-child {
+      order: 2;
+      @media (--m) {
+        order: 0;
+      }
+    }
+    img {
+      opacity: 0;
+    }
+  }
+  &__inner {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+  }
+}

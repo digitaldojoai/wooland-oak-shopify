@@ -1,0 +1,12 @@
+.core__values {
+  @media (--m) {
+    padding-bottom: 120px;
+  }
+  img {
+    max-width: 160px;
+  }
+  p {
+    max-width: 350px;
+    margin: auto;
+  }
+}

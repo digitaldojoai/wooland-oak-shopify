@@ -1,0 +1,75 @@
+{% assign team = section.settings %}
+
+<section data-section-id='{{ section.id }}' data-section-type='about-team-section'>
+  <div class='about-team rel'>
+    <div class='__bg abs fill' style='background-color: {{ team.background }}'></div>
+
+    <div class='outer rel z1'>
+      <div class='container'>
+        <img src='{{ team.image | img_url: '2400x' }}' class='fill-h' />
+
+        <p class='about-team__paragraph h3 ac mha serif'>{{ team.paragraph }}</p>
+
+        <hr class='cb' />
+
+        <div class='about-team__members f ais fw'>
+          {% for block in section.blocks %}
+            {% assign member = block.settings %}
+
+            <div class='about-team__member'>
+              <h3 class='mv0 serif'>{{ member.name }}</h3>
+              <h6 class='xsmall sans track caps demi cm mt025 mb1'>{{ member.title }}</h6>
+              <p class='mv0'>{{ member.description }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "About Team",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "textarea",
+        "id": "paragraph",
+        "label": "Paragraph"
+      },
+      {
+        "type": "color",
+        "id": "background",
+        "label": "Background"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "member",
+        "name": "Team Member",
+        "settings": [
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Name"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

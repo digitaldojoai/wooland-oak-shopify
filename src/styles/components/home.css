@@ -1,0 +1,11 @@
+.home {
+  .testimonial {
+    background-color: white;
+  }
+}
+
+.fs-slider-container {
+  @media (--m) {
+    padding: 10px 2rem 2rem;
+  }
+}

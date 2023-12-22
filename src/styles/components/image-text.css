@@ -1,0 +1,42 @@
+.image__text {
+  padding: 0px 0;
+  &_img {
+    img {
+      max-width: 80%;
+      margin: 0 auto;
+      padding-bottom: 50px;
+    }
+  }
+  @media (--m) {
+    padding: 2em;
+  }
+  &_copy {
+    @media (--m) {
+      text-align: left;
+
+      &.left {
+        padding-left: 30px;
+      }
+
+      &.right {
+        padding-right: 30px;
+      }
+    }
+    @media (--l) {
+      &.left {
+        padding-left: 80px;
+      }
+      &.right {
+        padding-right: 80px;
+      }
+    }
+    h4 {
+      font-family: 'freight-display-pro', serif;
+      margin: 0;
+    }
+    p {
+      font-weight: 300;
+    }
+
+  }
+}

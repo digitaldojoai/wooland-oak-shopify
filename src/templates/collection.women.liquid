@@ -1,0 +1,15 @@
+{% paginate collection.products by 100 %}
+
+{% section 'collection-hero-women' %}
+
+<section class='outer' data-component='collection' data-collection='{{ collection.handle }}'>
+  <div class='container'>
+    <div id='collectionRoot'></div>
+  </div>
+
+  {% section 'collection-features-women' %}
+</section>
+
+{% endpaginate %}
+
+{% include 'newsletter' with border: true %}

@@ -1,0 +1,47 @@
+{%- capture cx -%}
+  newsletter
+{%- endcapture -%}
+
+{% if border == true%}
+  <div class='container'>
+    <hr class='cgl' />
+  </div>
+{% endif %}
+
+<div class='{{ cx }}' >
+  <div class='container--s mha pt1'>
+    <p class='cw s1 mb0'>Get the inside scoop on your favorite cities, Wool & Oak product launches, and exclusive offers, delivered right to your inbox.</p>
+    <form data-component='newsletter' id='footerEmail' action='//manage.kmail-lists.com/subscriptions/subscribe' data-ajax-submit='//manage.kmail-lists.com/ajax/subscriptions/subscribe' method='GET' target='_blank'  class=' mt2 inline-block mha fill-h'>
+      <div class='newsletter__form'>
+        <input type='hidden' name='g' value='JiebPi' />
+        <div class='newsletter__form__group rel'>
+          <input type='email' name='email' class='fill-h sans book small ac' placeholder='Enter your email' />
+          <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="" tabindex="-1" value=""></div>
+
+          {%
+          include 'button' with
+          tag: 'button',
+          type: 'submit',
+          cta: '',
+          %}
+
+
+        </div>
+      </div>
+      <div class='newsletter__valid cgl small'>
+        <span><input type='checkbox' class='mr1' required name='terms'></span><span class='newsletter__valid_copy rel'>By checking this box you'll receive our newsletter on the newest products and happenings. You can unsubscribe any time you want. <a href='/pages/privacy'>Read more</a> here about how and why we ask for this data.</span>
+      </div>
+
+      <span class='h6 i cb js-error mt05' style='display: none'></span>
+    </form>
+    <div class='newsletter__success js-success hide'>
+      <p class='sw s1 mt1 cw'>Thanks!</h6>
+    </div>
+
+      <ul class='footer__social f fill-h'>
+        <li><a href='https://www.instagram.com/woolandoak/' class='link-hover' target='_blank'>{% include 'icon-instagram' %}</a></li>
+        <li><a href='https://www.facebook.com/woolnoak' class='link-hover' target='_blank'>{% include 'icon-facebook' %}</a></li>
+        <li><a href='https://www.twitter.com/woolandoak/' class='link-hover' target='_blank'>{% include 'icon-twitter' %}</a></li>
+      </ul>
+  </div>
+</div>

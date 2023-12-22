@@ -1,0 +1,11 @@
+{% layout none %}
+
+{% paginate search.results by 100 %}
+  {% if search.performed %}
+    [
+      {% for item in search.results %}
+        {{ item | json }}{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+  {% endif %}
+{% endpaginate %}

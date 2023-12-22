@@ -1,0 +1,57 @@
+.contact {}
+.contact__emails {
+  margin: 50px -2em 30px;
+  @media (--m) {
+    margin: 80px -2em 30px;
+  }
+}
+.contact__email {
+  padding-left: 2em;
+  padding-right: 2em;
+  width: 100%;
+  margin-bottom: 1.5em;
+
+  @media (--m) {
+    width: 50%;
+    margin-bottom: 2em;
+  }
+  @media (--l) {
+    width: 33%;
+    margin-bottom: 2em;
+  }
+}
+.contact__cols {
+  margin: 40px 0 60px;
+  @media (--l) {
+    margin: 50px -70px 100px;
+  }
+}
+.contact__col {
+  @media (--l) {
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+}
+.contact__form {
+  width: 100%;
+  @media (--l) {
+    width: 60%;
+  }
+  form {}
+}
+.contact__visit {
+  width: 100%;
+  margin-bottom: 40px;
+  order: -1;
+
+  @media (--l) {
+    margin-bottom: 0;
+    width: 40%;
+    order: unset;
+  }
+
+  iframe {
+    max-width: 100%;
+    width: 100%;
+  }
+}

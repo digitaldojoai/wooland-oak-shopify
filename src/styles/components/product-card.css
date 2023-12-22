@@ -1,0 +1,34 @@
+.product-card {
+  transition: transform var(--slow) var(--cubic);
+  .__bg {
+    box-shadow: 0 6px 12px 0 rgba(0,0,0,0.06);
+    opacity: 0;
+    transition: opacity var(--fast) var(--ease);
+  }
+  &:hover {
+    transform: translateY(-4px);
+    .__bg {
+      opacity: 1;
+    }
+  }
+  .touchevents & {
+    &:hover {
+      transform: translateY(0);
+      .__bg {
+        opacity: 0;
+      }
+    }
+  }
+}
+.product-card__img {
+  padding-top: 150%;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.product-card__content {
+  padding: 1em 0;
+  @media (--m) {
+    padding: 2em 1em;
+  }
+}

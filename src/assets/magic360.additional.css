@@ -1,0 +1,42 @@
+
+.Magic360:hover {
+    opacity: 1 !important;
+}
+
+.MagicToolboxSelectorsContainer a:hover,
+.active-magic-selector img {
+    -webkit-filter: brightness(80%);
+            filter: brightness(80%);
+}
+
+.MagicToolboxContainer.thumbnail-size-pico .MagicToolboxSelectorsContainer a img { max-height: 16px; }
+.MagicToolboxContainer.thumbnail-size-icon .MagicToolboxSelectorsContainer a img { max-height: 32px; }
+.MagicToolboxContainer.thumbnail-size-thumb .MagicToolboxSelectorsContainer a img { max-height: 50px; }
+.MagicToolboxContainer.thumbnail-size-small .MagicToolboxSelectorsContainer a img { max-height: 100px; }
+.MagicToolboxContainer.thumbnail-size-compact .MagicToolboxSelectorsContainer a img { max-height: 160px; }
+.MagicToolboxContainer.thumbnail-size-medium .MagicToolboxSelectorsContainer a img { max-height: 240px; }
+
+div.MagicToolboxSelectorsContainer { margin: 10px 0; }
+
+.MagicToolboxSlide { display: none; }
+.MagicToolboxSlide.active-magic-slide { display: block; }
+
+div.MagicToolboxSelectorsContainer a {
+    display: inline-block;
+    margin: 4px;
+    line-height: 0px;
+}
+.MagicToolboxSelectorsContainer a {
+    text-align: center;
+}
+.MagicToolboxSelectorsContainer a:after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.MagicToolboxSelectorsContainer a > img {
+    max-height: 100%;
+    max-width: 100%;
+    vertical-align: middle;
+}

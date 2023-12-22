@@ -1,0 +1,22 @@
+{% capture cx %}
+  product-detail
+  {{ className }}
+  {% if alternateLayout == true %}is-alternate-layout{% endif %}
+{% endcapture%}
+<div class='{% include 'u-cx' with cx %}'>
+  <div class='container'>
+    <div class='product-detail__container rel f aic jcb fw'>
+      <div class='product-detail__img rel fill-h'>
+        {% include 'image-fill' with image: image %}
+      </div>
+
+      <div class='product-detail__content f aic jcc fw fill-v fill-h outer'>
+        <div class='product-detail__content__inner mv1 pv1 ac'>
+          <h2 class='h6 sans caps track cm medium'>{{ label }}</h2>
+          <h3 class='h1 serif mv05'>{{ title }}</h3>
+          <p class='h4 mt0 mb1'>{{ description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+.three {
+  overflow: hidden;
+
+  @media (--l) {
+    height: calc(100vh - 100px);
+  }
+}
+.three__img {
+  height: 50vh;
+  @media (--l) {
+    height: 100%;
+    left: 50%;
+    width: 50%;
+  }
+}
+.three__content {
+  @media (--l) {
+    position: absolute;
+    min-width: 500px;
+    width: 50%;
+  }
+}
+.three__content__label {
+  margin-top: 2em;
+
+  @media (--l) {
+    position: absolute;
+    margin-top: 3em;
+  }
+}
+.three__content__inner {
+  max-width: 450px;
+  padding-bottom: 3em;
+
+  @media (--l) {
+    padding-bottom: 0;
+  }
+}

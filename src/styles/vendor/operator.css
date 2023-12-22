@@ -1,0 +1,6 @@
+#root {
+  transition: opacity var(--fast) var(--ease);
+}
+.operator-is-transitioning #root {
+  opacity: 0;
+}

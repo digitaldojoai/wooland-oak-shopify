@@ -1,0 +1,11 @@
+.page-hero {
+  height: 200px;
+
+  @media (--m) {
+    height: 400px;
+  }
+
+  h1 {
+    margin-top: auto;
+  }
+}

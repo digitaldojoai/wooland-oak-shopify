@@ -1,0 +1,9 @@
+.slideshow__slide {
+  h5 {
+    font-weight: 300;
+    font-size: calc((16/16) * 1rem);
+    @media (--m) {
+      font-size: calc((18/16) * 1rem);
+    }
+  }
+}

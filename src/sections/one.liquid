@@ -1,0 +1,115 @@
+{% assign themeLight = false %}
+{% if section.settings.button_theme == 'light' %}
+  {% assign themeLight = true %}
+{% endif %}
+
+<section data-section-id='{{ section.id }}' data-section-type='one-section'>
+  <div class='one rel'>
+    <div class='one__imgs rel fill-v'>
+      {% include 'image-fill' with image: section.settings.background %}
+
+      <div class='one__foreground one__container container rel fill-v'>
+        {% include 'image-fill' with image: section.settings.foreground %}
+      </div>
+    </div>
+
+    <div class='one__content'>
+      <div class='one__container container fill-v rel'>
+        <div class='one__content__inner fill f aic fw outer' style='background-color: {{ section.settings.background_color }}; color: {{ section.settings.color }}'>
+          <div class='one__content__label fill-h left right'>
+            <h6 class='mv0 sans ac caps track book small'>{{ section.settings.label }}</h6>
+          </div>
+
+          <div class='fa ac mt05 mb1 pv1'>
+            <h2 class='h1 mt0 mb025 serif'>{{ section.settings.title }}</h2>
+
+            {%
+              include 'button' with
+              tag: 'a',
+              cta: section.settings.cta,
+              href: section.settings.url,
+              className: 'mha',
+              light: themeLight,
+              outline: true
+            %}
+          </div>
+
+          <div class='one__content__label fill-h left right'>
+            <h6 class='mv0 sans ac caps track book small'>{{ section.settings.sublabel }}</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "One",
+    "settings": [
+      {
+        "type": "text",
+        "id": "label",
+        "label": "Label"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "cta",
+        "label": "CTA"
+      },
+      {
+        "type": "url",
+        "id": "url",
+        "label": "URL"
+      },
+      {
+        "type": "text",
+        "id": "sublabel",
+        "label": "Sub-label"
+      },
+      {
+        "type": "color",
+        "id": "color",
+        "label": "Text color",
+        "default": "#212529"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color",
+        "default": "#FFF"
+      },
+      {
+        "type": "radio",
+        "id": "button_theme",
+        "label": "Button Theme",
+        "options": [
+          { "value": "dark", "label": "Dark" },
+          { "value": "light", "label": "Light" }
+        ],
+        "default": "dark"
+      },
+      {
+        "type": "image_picker",
+        "id": "foreground",
+        "label": "Foreground image"
+      },
+      {
+        "type": "image_picker",
+        "id": "background",
+        "label": "Background image"
+      }
+    ],
+    "presets": [
+      {
+        "name": "One",
+        "category": "Features"
+      }
+    ]
+  }
+{% endschema %}

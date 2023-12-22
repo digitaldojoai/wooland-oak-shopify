@@ -1,0 +1,30 @@
+.intro {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  @media (--m) {
+    padding-top: 140px;
+    padding-bottom: 140px;
+  }
+}
+.intro__inner {
+  @media (--m) {
+    flex-wrap: nowrap;
+    text-align: left;
+  }
+
+  hr {
+    background: var(--gray);
+    margin: 40px 0;
+    @media (--m) {
+      width: 1px;
+      height: 250px;
+      margin: 0 80px;
+    }
+  }
+}
+.intro__img {
+  max-width: 130px;
+}
+.intro__text {
+  max-width: 718px;
+}

@@ -1,0 +1,69 @@
+{% capture cx %}
+  header fix top left fill-h z10
+{% endcapture %}
+
+<header id='header' role='banner' class='{% include 'u-cx' with cx %}' data-section-id='{{ section.id }}' data-section-type='header-section' data-component='header'>
+  <div class='outer'>
+    <div class='container container--xl container--c'>
+      <nav class='header__inner f jcb aic fill-h sans small book caps track--l'>
+        <button class='header__burger rel js-toggle'><span></span></button>
+
+        <ul class='header__left f aic fill-v'>
+          <div id='APIHeader' data-component='api-header' class='header__link_fake fill-v'></div>
+          <li class='header__link fill-v'>
+            <a href='/pages/our-journey' class='fill-v bold f aic'><span>Our Journey</span></a>
+          </li>
+        </ul>
+
+        <a href='/' class='header__logo f jcc rel'>
+          {% if template.name == 'index' %}
+            <h1 class='mv0 f aic' itemscope itemtype='http://schema.org/Organization'>
+          {% else %}
+            <div class='f aic' itemscope itemtype='http://schema.org/Organization'>
+          {% endif %}
+            {% include 'icon-logotype' %}
+          {% if template.name == 'index' %}
+            </h1>
+          {% else %}
+            </div>
+          {% endif %}
+
+        </a>
+
+        <ul class='header__right f aic jce fill-v f aic'>
+            <li class='header__link fill-v'>
+              <a href='/blogs/passport' class='fill-v f aic bold'><span>Passport</span></a>
+            </li>
+            <!-- <li class='header__link fill-v'>
+              <a href='/login/' class='fill-v f aic bold'><span>Login</span></a>
+            </li> -->
+
+            {% if shop.customer_accounts_enabled %}
+              {% if customer %}
+                <li class='header__link fill-v'>
+                  <a href="/account" class='fill-v f aic bold'>{{ 'layout.customer.account' | t }}</a>
+                </li>
+              {% else %}
+                <li class='header__link fill-v'>
+                  <a class='fill-v f aic bold' href="/account/login">Login</a>
+                </li>
+              {% endif %}
+          {% endif %}
+
+          <li class='header__link fill-v f aic'>
+            <a href='/cart' class='header__cart f aic js-cart-drawer-toggle no-ajax fill-v'>
+              <svg width="26px" height="26px" viewBox="0 0 26 26"><g id="Navigation" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"><g id="Navigation-3" transform="translate(-1319.000000, -59.000000)" stroke="#1B1E2D"><g id="Navigation---Products-Open"><g id="Nav"><g id="Links"><g id="Cart" transform="translate(1320.000000, 57.000000)"><g id="Icon/Bag/Black" transform="translate(0.000000, 3.000000)"><g id="Group"><path d="M6.7826087,11.4782609 L6.7826087,5.2173913 C6.7826087,2.34782609 9.13043478,0 12,0 C14.8695652,0 17.2173913,2.34782609 17.2173913,5.2173913 L17.2173913,11.4782609" id="Shape" stroke-width="2"></path><path d="M24,14.0869565 C24,11.4782609 21.9130435,9.39130435 19.3043478,9.39130435 L4.69565217,9.39130435 C2.08695652,9.39130435 0,11.4782609 0,14.0869565 L0,20.8695652 C0,22.5913043 1.40869565,24 3.13043478,24 L20.8695652,24 C22.5913043,24 24,22.5913043 24,20.8695652 L24,14.0869565 Z" id="Shape" stroke-width="2"></path><path d="M5.2173913,24 C5.2173913,21.1304348 2.86956522,18.7826087 0,18.7826087" id="Shape" stroke-width="2"></path><path d="M18.7826087,24 C18.7826087,21.1304348 21.1304348,18.7826087 24,18.7826087" id="Shape" stroke-width="2"></path><path d="M24,14.6086957 L1,14.6086957" id="Shape" stroke-width="2"></path></g></g></g></g></g></g></g></g></svg>
+              <span class='__circle bgw block ac demi ml075 js-cart-count'>{{ cart.item_count }}</span>
+            </a>
+          </li>
+        </ul>
+
+        <a href='/cart' class='header__cart header__cart--mobile js-cart-drawer-toggle no-ajax'>
+          <span class='__circle bgw block ac js-cart-count'>{{ cart.item_count }}</span>
+        </a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- {% include 'promo-bar' %} -->
+</header>

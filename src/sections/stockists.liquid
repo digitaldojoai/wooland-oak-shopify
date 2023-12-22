@@ -1,0 +1,36 @@
+<section data-section-id='{{ section.id }}' data-section-type='contact-section'>
+  <div class='outer'>
+    <div class='container'>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "events",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "event",
+        "name": "event",
+        "settings": [
+          {
+            "type": "text",
+            "id": "label",
+            "label": "label"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "title"
+          },
+          {
+            "type": "checkbox",
+            "id": "upcoming",
+            "label": "upcoming?"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

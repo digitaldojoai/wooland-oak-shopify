@@ -1,0 +1,84 @@
+<section data-section-id='{{ section.id }}' data-section-type='three-section'>
+  <div class='three rel'>
+    <div class='three__img rel'>
+      {% include 'image-fill' with image: section.settings.image %}
+    </div>
+
+    <div class='three__content top left bottom' style='background-color: {{ section.settings.background_color }}; color: {{ section.settings.color }}'>
+      <div class='f aic fw fill-v fill-h outer'>
+        <div class='three__content__label top left right fill-h mb1'>
+          <h6 class='mv0 sans track caps ac small book'>{{ section.settings.label }}</h6>
+        </div>
+
+        <div class='three__content__inner ac mha'>
+          <h2 class='h1 serif mt0 mb025'>{{ section.settings.title }}</h2>
+          <p class='h4 mt0 mb1'>{{ section.settings.description }}</p>
+
+          {%
+            include 'button' with
+            tag: 'a',
+            cta: section.settings.cta,
+            href: section.settings.url,
+            outline: true
+          %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Three",
+    "settings": [
+      {
+        "type": "text",
+        "id": "label",
+        "label": "Label"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "cta",
+        "label": "CTA"
+      },
+      {
+        "type": "url",
+        "id": "url",
+        "label": "URL"
+      },
+      {
+        "type": "color",
+        "id": "color",
+        "label": "Text color",
+        "default": "#212529"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color",
+        "default": "#FFF"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Three",
+        "category": "Features"
+      }
+    ]
+  }
+{% endschema %}

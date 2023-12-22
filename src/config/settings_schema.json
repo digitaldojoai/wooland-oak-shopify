@@ -1,0 +1,71 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Recreo",
+    "theme_version": "1.0.0",
+    "theme_author": "The Couch",
+    "theme_documentation_url": "http://thecouch.nyc",
+    "theme_support_url": "http://thecouch.nyc"
+  },
+  {
+    "name": "Misc",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "external_scripts",
+        "label": "Third-party scripts",
+        "info": "Paste in embed codes and the like here. Do not add them to the templates."
+      }
+    ]
+  },
+  {
+    "name": "Newsletter Section",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "newsletter_prompt",
+        "label": "Prompt"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_cta",
+        "label": "CTA"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_action",
+        "label": "Form Action URL",
+        "info": "For more info, check out [this article](https://shopify.barrelny.com/where-do-i-find-the-mailchimp-signup-url/)."
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Sharing links"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "Twitter link"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook link"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "Pinterest link"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram link"
+      }
+    ]
+  }
+]

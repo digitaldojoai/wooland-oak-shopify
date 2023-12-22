@@ -1,0 +1,24 @@
+.cart__button {
+  span {
+    max-width: 200px;
+  }
+}
+
+.cart {
+  .cart-drawer__item {
+    border-bottom: 1px solid var(--gray-border);
+  }
+}
+
+.cart-drawer__upsell {
+  &_image {
+    max-width: 120px;
+  }
+  img {
+    width: 100%;
+  }
+}
+
+.js-upsells {
+  padding-bottom: 120px;
+}

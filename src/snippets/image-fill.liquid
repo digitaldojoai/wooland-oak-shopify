@@ -1,0 +1,22 @@
+{% if size == blank %}
+   {% assign size = '2000x' %}
+{% endif %}
+
+{%- capture cx -%}
+  obj-fit abs fill js-obj-fit-image lazy-img
+  {{ className }}
+{%- endcapture -%}
+
+{% if image contains 'cdn.shopify' %}
+  {% assign img = image %}
+{% else %}
+  {% assign img = image | img_url: size, format: 'pjpg' %}
+{% endif %}
+
+{% if img contains 'no-image' %}
+  {% assign img = '//images.contentful.com/mhcx2sypq9if/2FjzCj8lnyS6iaCyekCwS4/f99cf1dd6fc79b27dfb354e3543805cf/our-journey-hero.jpg' %}
+{% endif %}
+
+<div class='{{ cx }}'>
+  <img class='fill-h fill-v abs fill' data-normal='{{ img }}' />
+</div>

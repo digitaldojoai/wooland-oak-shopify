@@ -1,0 +1,43 @@
+.page-spacing-vertical {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  @media (--m) {
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+  @media (--m) {
+    margin-top: 120px;
+    margin-bottom: 120px;
+  }
+}
+.rte {
+  a {
+    color: var(--yellow);
+  }
+}
+
+.single {
+  min-height: 150vh;
+  overflow: hidden;
+  &__title {
+    padding-top: 100px;
+    @media (--m) {
+      padding-top: 150px;
+    }
+  }
+  .slideshow__company {
+    display: none !important;
+  }
+}
+
+.simple {
+  &__text {
+    padding-bottom: 40px;
+    @media (--m) {
+      padding-bottom: 80px;
+    }
+    .container--a {
+      max-width: 900px;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+.account {
+  padding: 10px;
+  margin-top: 70px;
+  width: 100%;
+  @media (--m) {
+    margin-top: 0;
+    padding: 0;
+  }
+  &__col {
+    width: 100%;
+    @media (--m) {
+      width: 50%;
+      height: 100vh;
+      min-height: 700px;
+    }
+  }
+  .input-wrapper {
+    input {
+      border: 1px solid var(--orange);
+      font-size: 14px;
+      line-height: 1.3;
+    }
+  }
+}
